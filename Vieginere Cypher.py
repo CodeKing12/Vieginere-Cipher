@@ -1,4 +1,10 @@
 alphabets = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+uninfini = 0
+fixed = len(alphabets)
+for letter in alphabets:
+    if uninfini < fixed:
+        alphabets.append(letter.upper())
+        uninfini += 1
 punctuations = "!@#$%^&*()_+?|~`.,<>'  '"
 
 def code_cipher(message, keyword):
@@ -91,5 +97,21 @@ def decode_cipher(dmessage, keyword):
     decoded_sentence = "".join(decoded)
     return decoded_sentence
 
-print(code_cipher("I dont want dummies to see my message", "keycodestood"))
-print(decode_cipher("I nslv kdrl wiapsiq vc viw fm ahcwyis", "keycodestood"))
+purpose = input("Do you want to encrypt of decrypt a message? Reply \"1\" if you would like to encrypt a message. Reply \"2\" if you would like to decrypt a message: ")
+
+if purpose == "1":
+    message = input("What message would you like to encrypt? ")
+    keyword = input("What keyword do you want to use to encrypt the message? ")
+    encrypted_message = code_cipher(message,keyword)
+    print("""Here is your encrypted message:
+    
+    {}""".format(encrypted_message))
+elif purpose == "2":
+    dmessage = input("What message you you like to decode/decrypt? ")
+    keyword = input("What keyword has been used to encrypt the message? ")
+    decrypted_message = decode_cipher(dmessage, keyword)
+    print("""Here is your decoded/decrypted message:
+    
+    {}""".format(decrypted_message))
+else:
+    print("Invalid Response")
